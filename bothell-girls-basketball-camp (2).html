@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bothell Girls Basketball Camp — July 20–22, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cougar-navy: #1a3a8a;
+      --cougar-gold: #ffffff;
+      --cougar-gold-light: #e8edf7;
+      --accent-coral: #4a90e8;
+      --bg-cream: #f5f7fc;
+      --bg-warm: #eaeff8;
+      --text-dark: #1a1a1a;
+      --text-muted: #5a5a5a;
+      --white: #ffffff;
+      --border-light: #cdd5e5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cougar-navy);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(74,144,232,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 70%),
+        repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px),
+        repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px);
+    }
+    .court-lines { position: absolute; inset: 0; opacity: 0.04; }
+    .court-lines::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .court-lines::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      width: 3px; height: 100%;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 2rem; max-width: 900px;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.9);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeSlideDown 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      animation: fadeSlideUp 0.8s ease 0.15s both;
+    }
+    .hero h1 .gold { color: #a8c4f0; }
+    .hero-sub {
+      font-size: 1.15rem; font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-top: 1.5rem; line-height: 1.6;
+      max-width: 560px; margin-left: auto; margin-right: auto;
+      animation: fadeSlideUp 0.8s ease 0.3s both;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+      animation: fadeSlideUp 0.8s ease 0.45s both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.2rem;
+      background: var(--white); color: var(--cougar-navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: var(--cougar-gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(26,58,138,0.3);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.2rem;
+      background: transparent; color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.3);
+      animation: bounce 2s infinite; z-index: 2;
+    }
+    .scroll-hint svg { width: 24px; height: 24px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(26,58,138,0.97);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+    }
+    .nav-logo span { color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem;
+      letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-label {
+      font-family: 'Oswald', sans-serif; font-size: 0.75rem;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--cougar-navy); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase;
+      line-height: 1.05; color: var(--cougar-navy); margin-bottom: 1.5rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--text-muted); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1rem; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .highlight-card { background: var(--bg-cream); padding: 1.8rem; border-left: 3px solid var(--cougar-navy); }
+    .highlight-card h4 { font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cougar-navy); margin-bottom: 0.4rem; }
+    .highlight-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .coach-card { background: var(--cougar-navy); padding: 3rem; color: var(--white); position: relative; overflow: hidden; }
+    .coach-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; }
+    .coach-card .section-label { margin-bottom: 0.8rem; color: rgba(255,255,255,0.6); }
+    .coach-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .coach-card .coach-title { color: rgba(255,255,255,0.8); font-size: 0.95rem; font-weight: 500; margin-bottom: 1.5rem; }
+    .coach-card p { color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.95rem; }
+    .coach-contact { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .coach-contact a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 600; }
+    .coach-contact a:hover { text-decoration: underline; }
+
+    /* ── DETAILS ── */
+    #details { background: var(--bg-cream); }
+    .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .detail-block { background: var(--white); padding: 2.5rem 2rem; border-bottom: 3px solid var(--cougar-navy); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .detail-block:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .detail-icon { width: 48px; height: 48px; background: var(--cougar-navy); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .detail-icon svg { width: 22px; height: 22px; stroke: var(--white); fill: none; stroke-width: 2; }
+    .detail-block h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--cougar-navy); margin-bottom: 0.8rem; }
+    .detail-block p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+    .detail-block .detail-value { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 600; color: var(--cougar-navy); margin-bottom: 0.3rem; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--cougar-navy); color: var(--white); }
+    #skills .section-title { color: var(--white); }
+    #skills .section-label { color: rgba(255,255,255,0.6); }
+    .skills-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 3rem; border: 1px solid rgba(255,255,255,0.08); }
+    .skill-item { padding: 2rem 2.5rem; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: flex-start; gap: 1.2rem; transition: background 0.3s; }
+    .skill-item:hover { background: rgba(255,255,255,0.03); }
+    .skill-num { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(255,255,255,0.6); line-height: 1; min-width: 2rem; }
+    .skill-item h4 { font-family: 'Oswald', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .skill-item p { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── REGISTER ── */
+    #register { background: var(--white); }
+    .reg-layout { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: start; }
+    .google-form-wrapper { background: var(--bg-cream); border: 1.5px solid var(--border-light); min-height: 2800px; }
+    .google-form-wrapper iframe { width: 100%; height: 2742px; border: none; }
+    .form-placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 600px; padding: 3rem; text-align: center;
+      background: var(--bg-cream); border: 2px dashed var(--border-light);
+    }
+    .form-placeholder svg { width: 64px; height: 64px; stroke: var(--cougar-gold); fill: none; stroke-width: 1.5; margin-bottom: 1.5rem; }
+    .form-placeholder h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; color: var(--cougar-navy); margin-bottom: 0.8rem; }
+    .form-placeholder p { color: var(--text-muted); line-height: 1.6; max-width: 400px; }
+
+    .reg-sidebar { position: sticky; top: 100px; }
+    .sidebar-card { background: var(--cougar-navy); color: var(--white); padding: 2.5rem; margin-bottom: 1.5rem; }
+    .sidebar-card h4 { font-family: 'Oswald', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 1.2rem; }
+    .sidebar-card p, .sidebar-card li { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+    .sidebar-card ul { list-style: none; }
+    .sidebar-card li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; }
+    .sidebar-card li span:last-child { color: var(--white); font-weight: 600; }
+
+    .packing-list { background: var(--bg-warm); padding: 2rem; border-left: 3px solid var(--accent-coral); margin-bottom: 1.5rem; }
+    .packing-list h4 { font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cougar-navy); margin-bottom: 1rem; }
+    .packing-list ul { list-style: none; }
+    .packing-list li { padding: 0.4rem 0; font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.6rem; }
+    .packing-list li::before { content: ''; width: 6px; height: 6px; background: var(--cougar-navy); flex-shrink: 0; }
+
+    .sidebar-note { background: var(--bg-warm); padding: 2rem; border-left: 3px solid var(--cougar-navy); margin-bottom: 1.5rem; }
+    .sidebar-note h4 { font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cougar-navy); margin-bottom: 0.8rem; }
+    .sidebar-note p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    .cancellation-note { margin-top: 2rem; padding: 1.5rem 2rem; background: var(--bg-warm); border-left: 3px solid var(--border-light); font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .cancellation-note strong { color: var(--text-dark); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--cougar-navy); color: rgba(255,255,255,0.5); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+    .footer-logo span { color: rgba(255,255,255,0.7); }
+    footer p { font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .details-grid { grid-template-columns: 1fr; }
+      .skills-list { grid-template-columns: 1fr; }
+      .reg-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .reg-sidebar { position: static; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--cougar-navy);
+        padding: 1.5rem 2rem; gap: 1rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      }
+      section { padding: 4rem 1.5rem; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.8rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Bothell <span>Girls Basketball</span> Camp</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="court-lines"></div>
+    <div class="hero-content">
+      <div class="hero-badge">July 20–22, 2026 &bull; Bothell High School</div>
+      <h1>Bothell <span class="gold">Girls</span><br>Basketball Camp</h1>
+      <p class="hero-sub">
+        A 3-day intensive camp for girls ages 7–14. Build skills, confidence, and a love for the game on the Zach LaVine Court at Bothell High School.
+      </p>
+      <div class="hero-cta">
+        <a href="#register" class="btn-primary">
+          Register Now — $180
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#details" class="btn-outline">Camp Details</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">About the Camp</div>
+          <h2 class="section-title">Develop Your Game.<br>Find Your Confidence.</h2>
+          <p>The Bothell Girls Basketball Camp is a 3-day intensive designed to help young athletes sharpen their skills, build basketball IQ, and grow their love for the game. Whether you're stepping on the court for the first time or preparing for your school team, this camp meets you where you are.</p>
+          <p>Directed by the Bothell High School Girls Basketball coaching staff, campers will receive the same quality instruction and attention that has built one of KingCo's top programs. Daily schedules are packed with skill work, competition, and individual evaluation — all in a supportive, high-energy environment.</p>
+          <div class="about-highlights">
+            <div class="highlight-card"><h4>Skill Development</h4><p>Shooting, ball handling, footwork & offensive moves</p></div>
+            <div class="highlight-card"><h4>Team Play</h4><p>Daily games, team competitions & learning to play together</p></div>
+            <div class="highlight-card"><h4>Individual Attention</h4><p>Personal evaluation and position-specific coaching</p></div>
+            <div class="highlight-card"><h4>Mindset</h4><p>Goal setting, confidence building & motivation techniques</p></div>
+          </div>
+        </div>
+
+        <div class="coach-card">
+          <div class="section-label">Camp Director</div>
+          <h3>Coach McBride</h3>
+          <div class="coach-title">Head Girls Basketball Coach — Bothell High School</div>
+          <p>Coach McBride and the BHS girls basketball staff bring a competitive, development-focused approach to camp. Assisted by area high school coaches, current players, and former high school and college athletes, the coaching staff is committed to helping every camper improve.</p>
+          <div class="coach-contact">
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Questions? Reach out:</p>
+            <a href="mailto:kmcbride@nsd.org">kmcbride@nsd.org</a>
+            <p style="margin-top: 1rem;"><a href="https://www.instagram.com/bhs_ladycougs/" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.9); font-weight: 600; text-decoration: none;">Follow @bhs_ladycougs on Instagram</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details">
+    <div class="container">
+      <div class="section-label">Camp Information</div>
+      <h2 class="section-title">Everything You Need<br>to Know</h2>
+      <div class="details-grid">
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>Dates</h3>
+          <div class="detail-value">July 20–22, 2026</div>
+          <p>Monday through Wednesday. Three full days of basketball development and competition.</p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Time</h3>
+          <div class="detail-value">9:00 AM – 2:00 PM</div>
+          <p>Full-day sessions packed with instruction, drills, games, and competitions.</p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Location</h3>
+          <div class="detail-value">Bothell High School</div>
+          <p>9130 NE 180th St, Bothell, WA 98011. Playing on the Zach LaVine Court.</p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Ages</h3>
+          <div class="detail-value">Girls Ages 7–14</div>
+          <p>All skill levels welcome — from beginners to experienced travel players.</p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Cost</h3>
+          <div class="detail-value">$180</div>
+          <p>Includes all 3 days of camp plus a camp t-shirt. Select your shirt size during registration.</p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h3>What to Bring Daily</h3>
+          <div class="detail-value">Come Prepared</div>
+          <p>Pack a lunch, enough water for the day, and bring a basketball. Wear basketball shoes and athletic clothing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">What You'll Learn</div>
+      <h2 class="section-title">Curriculum Built for<br>Real Improvement</h2>
+      <div class="skills-list">
+        <div class="skill-item"><div class="skill-num">01</div><div><h4>Shooting Mechanics</h4><p>Form shooting, catch-and-shoot, off-the-dribble pull-ups, and free throw technique.</p></div></div>
+        <div class="skill-item"><div class="skill-num">02</div><div><h4>Ball Handling</h4><p>Dribble moves, change of pace, crossovers, and attacking off the bounce.</p></div></div>
+        <div class="skill-item"><div class="skill-num">03</div><div><h4>Offensive Footwork</h4><p>Triple threat, jab steps, pivoting, and creating space without the ball.</p></div></div>
+        <div class="skill-item"><div class="skill-num">04</div><div><h4>Defensive Fundamentals</h4><p>Stance, closeouts, help defense positioning, and on-ball pressure.</p></div></div>
+        <div class="skill-item"><div class="skill-num">05</div><div><h4>Passing & Court Vision</h4><p>Chest, bounce, and overhead passes. Reading the floor and making smart decisions.</p></div></div>
+        <div class="skill-item"><div class="skill-num">06</div><div><h4>Game Situations</h4><p>1-on-1, 3-on-3, and 5-on-5 play with coaching feedback in real time.</p></div></div>
+        <div class="skill-item"><div class="skill-num">07</div><div><h4>Rebounding & Hustle</h4><p>Boxing out, pursuit of the ball, and competing for every possession.</p></div></div>
+        <div class="skill-item"><div class="skill-num">08</div><div><h4>Leadership & Mindset</h4><p>Goal setting, positive self-talk, being a great teammate, and competing with confidence.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="register">
+    <div class="container">
+      <div class="section-label">Sign Up</div>
+      <h2 class="section-title">Register for Camp</h2>
+      <div class="reg-layout">
+        <div>
+          <!--
+            ════════════════════════════════════════════════════════
+              GOOGLE FORM INTEGRATION
+            ════════════════════════════════════════════════════════
+              TO ACTIVATE:
+              1. Create a Google Form with these fields:
+                 - Camper First Name (Short answer) *
+                 - Camper Last Name (Short answer) *
+                 - Date of Birth (Date) *
+                 - Age at Camp (Dropdown: 7,8,9,10,11,12,13,14) *
+                 - School (Short answer)
+                 - T-Shirt Size (Dropdown: Youth S, Youth M, Youth L, Adult S, Adult M, Adult L, Adult XL) *
+                 - Parent/Guardian Name (Short answer) *
+                 - Email Address (Short answer, email validation) *
+                 - Phone Number (Short answer) *
+                 - Emergency Contact Phone (Short answer) *
+                 - Address (Short answer)
+                 - Allergies / Medical Conditions (Paragraph)
+                 - Waiver Acknowledgment (Checkbox) *
+                 - Photo Release (Checkbox)
+
+              2. In Google Forms, click Send > Embed icon (<>)
+              3. Copy the URL from the src="..." in the embed code
+              4. Uncomment the iframe below and paste the URL
+              5. Delete or comment out the form-placeholder div
+            ════════════════════════════════════════════════════════
+          -->
+          <div class="google-form-wrapper" id="formWrapper">
+
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSevOA57p5pnm2YNGGW_tw1WBQvvcLnKd1HGFyWt88TPhQagnQ/viewform?embedded=true" width="100%" height="2742" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+
+          <div class="cancellation-note">
+            <strong>Cancellation Policy:</strong> A fee of $75 will be charged for cancellations made prior to the start of camp. Cancellations within 10 days of camp for medical reasons may be applied to future camps. No refunds after the start of camp.
+          </div>
+        </div>
+
+        <div class="reg-sidebar">
+          <div class="sidebar-card">
+            <h4>Camp Quick Facts</h4>
+            <ul>
+              <li><span>Dates</span><span>July 20–22, 2026</span></li>
+              <li><span>Duration</span><span>3 Days</span></li>
+              <li><span>Time</span><span>9:00 AM – 2:00 PM</span></li>
+              <li><span>Ages</span><span>Girls 7–14</span></li>
+              <li><span>Location</span><span>Bothell High School</span></li>
+              <li><span>Includes</span><span>Camp T-Shirt</span></li>
+              <li style="border:none;"><span>Cost</span><span style="color:rgba(255,255,255,0.9); font-size:1.1rem;">$180</span></li>
+            </ul>
+          </div>
+
+          <div class="packing-list">
+            <h4>Daily Packing List</h4>
+            <ul>
+              <li>Packed lunch</li>
+              <li>Enough water for the day</li>
+              <li>Basketball</li>
+              <li>Basketball shoes</li>
+              <li>Athletic clothing</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-note">
+            <h4>Questions?</h4>
+            <p>Contact Coach McBride at <a href="mailto:kmcbride@nsd.org" style="color:var(--cougar-navy); font-weight:600;">kmcbride@nsd.org</a> or call <strong>425.408.7038</strong> for more information.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Bothell <span>Girls Basketball</span> Camp</div>
+      <p>Bothell High School &bull; 9130 NE 180th St, Bothell, WA 98011</p>
+      <p><a href="mailto:kmcbride@nsd.org">kmcbride@nsd.org</a> &bull; 425.408.7038 &bull; <a href="https://www.instagram.com/bhs_ladycougs/" target="_blank" rel="noopener">@bhs_ladycougs</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+    document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+    document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
