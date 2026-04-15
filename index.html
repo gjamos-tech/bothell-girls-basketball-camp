@@ -223,6 +223,68 @@
     .skill-item h4 { font-family: 'Oswald', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
     .skill-item p { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.5; }
 
+    /* ── PAYMENT ── */
+    .payment-section {
+      margin-top: 2.5rem;
+      background: var(--cougar-navy);
+      padding: 2.5rem;
+      color: var(--white);
+    }
+    .payment-header { margin-bottom: 1.5rem; }
+    .payment-step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1rem;
+    }
+    .payment-header h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+    }
+    .payment-header p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .venmo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2rem;
+      background: #008CFF;
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .venmo-btn:hover {
+      background: #0070cc;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,140,255,0.35);
+    }
+    .payment-note {
+      margin-top: 1rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .payment-note strong { color: rgba(255,255,255,0.8); }
+
     /* ── REGISTER ── */
     #register { background: var(--white); }
     .reg-layout { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: start; }
@@ -435,7 +497,8 @@
   <section id="register">
     <div class="container">
       <div class="section-label">Sign Up</div>
-      <h2 class="section-title">Register for Camp</h2>
+      <h2 class="section-title">Register & Pay</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem;">Step 1: Complete the registration form. Step 2: Submit your $180 payment via Venmo.</p>
       <div class="reg-layout">
         <div>
           <!--
@@ -468,6 +531,22 @@
           <div class="google-form-wrapper" id="formWrapper">
 
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSevOA57p5pnm2YNGGW_tw1WBQvvcLnKd1HGFyWt88TPhQagnQ/viewform?embedded=true" width="100%" height="2742" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+
+          <!-- PAYMENT SECTION -->
+          <div class="payment-section">
+            <div class="payment-header">
+              <div class="payment-step-badge">Step 2</div>
+              <h3>Submit Payment — $180</h3>
+              <p>After completing the registration form above, submit your $180 camp fee via Venmo to complete your registration.</p>
+            </div>
+            <div class="payment-options">
+              <a href="https://account.venmo.com/u/bhs_ladycougs" target="_blank" rel="noopener" class="venmo-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 1.5c.9 1.5 1.3 3 1.3 5 0 5.5-4.7 12.7-8.5 17.5H5L2.2 2.2l6.3-.6 1.5 12c1.4-2.3 3.1-5.8 3.1-8.2 0-1.9-.3-3.1-.8-4.1l5.2-.8z"/></svg>
+                Pay $180 with Venmo
+              </a>
+              <p class="payment-note">Please include your <strong>camper's full name</strong> in the Venmo payment note so we can match it to your registration.</p>
+            </div>
           </div>
 
           <div class="cancellation-note">
